@@ -4,6 +4,7 @@ author: "Efe Baslar"
 date: '2022-04-01'
 output: 
   html_document:
+    css: styles.css
     toc: true
     toc_depth: 4
     toc_float: true

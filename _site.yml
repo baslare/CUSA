@@ -4,9 +4,12 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
-  
+    - text: "Efe Baslar"
+      href: https://baslare.net
+output: 
+  html_document:
+    css: styles.css
+    
   
   
 

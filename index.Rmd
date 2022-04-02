@@ -7,4 +7,4 @@ Hello, everyone!
 I'll be putting the summary documents here!
 
 
-- [Factor Analysis](/summary_fa_1.html)
+- [Factor Analysis](./summary_fa_1.html)
