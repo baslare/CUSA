@@ -1,0 +1,12 @@
+name: "CUSA Summaries"
+navbar:
+  title: "CUSA Summaries"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+  
+  
+  
+
