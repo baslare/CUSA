@@ -347,6 +347,7 @@ div.tocify {
 </div>
 
 
+<p><br></p>
 <div id="introduction" class="section level3">
 <h3>Introduction</h3>
 <p>Hello everyone!</p>
@@ -358,6 +359,7 @@ class="uri">http://rmarkdown.rstudio.com</a>.</p>
 <p>I’ll be using RMarkdown to prepare the summaries. You can skip the R
 sections if you are not interested. But they are much easier to get into
 than you’d probably think. Let us start with some preliminaries:</p>
+<p><br></p>
 </div>
 <div id="why-use-it-at-all" class="section level3">
 <h3>Why use it at all?</h3>
@@ -375,6 +377,7 @@ factors that adequately explain the variation in your original data set,
 you end up having a much manageable data set with similar/correlated
 variables grouped together and represented by a variable that can be
 named arbitrarily, depending on the context.</p>
+<p><br></p>
 </div>
 <div id="variance-accounted-forexplained" class="section level3">
 <h3>Variance accounted for/explained</h3>
@@ -392,12 +395,12 @@ also making sure that we don’t lose much (unique) information in the
 process. <strong>Communality</strong> (<span
 class="math inline">\(h^2\)</span>) therefore represents variance
 explained in a particular variable by the factors generated, whereas
-<strong>uniqueness</strong> represents the variance that the factors are
-not able to explain, you could say “information lost” during
-compression. If you had as many factors as you have variables, you could
-perfectly explain the variance and you would have a communality value of
-1 for each variable. But then it would not make any sense to use factor
-analysis, would it?</p>
+<strong>uniqueness</strong> (<span class="math inline">\(u^2\)</span>)
+represents the variance that the factors are not able to explain, you
+could say “information lost” during compression. If you had as many
+factors as you have variables, you could perfectly explain the variance
+and you would have a communality value of 1 for each variable. But then
+it would not make any sense to use factor analysis, would it?</p>
 <p>The resulting system of equations in matrix notation looks like the
 following, assume there are <span class="math inline">\(m\)</span>
 observations, <span class="math inline">\(n\)</span> variables in your
@@ -435,6 +438,7 @@ variance of 1</p>
 \Psi\]</span></p>
 <p>which could also be denoted as the following.</p>
 <p><span class="math display">\[ 1 = h^2 + u^2\]</span></p>
+<p><br></p>
 </div>
 <div id="distinction---supervised-vs-unsupervised-methods"
 class="section level3">
@@ -459,6 +463,7 @@ correlation), you might have to conclude that it is not worth using
 factor analysis. Because even if you reduce your data set to a number of
 factors, if the variance explained by these factors is around 30%
 percent, it will not have made sense to use factor analysis.</p>
+<p><br></p>
 </div>
 <div id="application" class="section level3">
 <h3>Application</h3>
@@ -2120,12 +2125,14 @@ attractive_teeth
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <div id="rotations" class="section level4">
 <h4>Rotations</h4>
 <p>refer to <a
 href="http://static.esmt.org/pub/edtech/customer_perceptions.html"
 class="uri">http://static.esmt.org/pub/edtech/customer_perceptions.html</a>
 for a detailed account of factor rotations.</p>
+<p><br></p>
 </div>
 <div id="factors-scores" class="section level4">
 <h4>Factors Scores</h4>
@@ -2635,6 +2642,7 @@ MR2
 in the original data set. We are now ready to use these factors as
 inputs in a different analysis! Note that all the factors have 0 mean
 and 1 variance, as this is how they are constructed.</p>
+<p><br></p>
 </div>
 </div>
 <div id="questions" class="section level3">

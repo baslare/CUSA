@@ -19,6 +19,7 @@ require(psych)
 ```
 
 
+<br>
 
 ### Introduction
 
@@ -28,6 +29,7 @@ This is called an "RMarkdown" file. You can do all sorts of amazing stuff using 
 
 I'll be using RMarkdown to prepare the summaries. You can skip the R sections if you are not interested. But they are much easier to get into than you'd probably think. Let us start with some preliminaries:
 
+<br>
 
 ### Why use it at all?
 
@@ -36,12 +38,13 @@ I'll be using RMarkdown to prepare the summaries. You can skip the R sections if
   Your data set may allow you to indirectly get a measure on those unobservable characteristics. So you're basically hitting two birds with one stone here. After running a factor analysis method and having factors that adequately explain the variation in your original data set, you end up having a much manageable data set with similar/correlated variables grouped together and represented by a variable that can be named arbitrarily, depending on the context.
   
   
-  
+<br>
+
 ### Variance accounted for/explained
 
   You've seen the same logic at work in regression analysis. Variance means information, covariance means the degree of similarity between information carried by two variables. Covariance makes up the most basic block in factor analysis, therefore it is important to grasp what it means. 
 
-  If we have variables with high correlation, then we can assume that they have some information in common. You might even say that you have some duplicate information stored by two variables that you could compress without losing much, pretty similar (but not identical to) to what Winrar, Winzip and co. do, we _compress_ the data set while also making sure that we don't lose much (unique) information in the process. __Communality__ ($h^2$) therefore represents variance explained in a particular variable by the factors generated, whereas __uniqueness__ represents the variance that the factors are not able to explain, you could say "information lost" during compression. If you had as many factors as you have variables, you could perfectly explain the variance and you would have a communality value of 1 for each variable. But then it would not make any sense to use factor analysis, would it?
+  If we have variables with high correlation, then we can assume that they have some information in common. You might even say that you have some duplicate information stored by two variables that you could compress without losing much, pretty similar (but not identical to) to what Winrar, Winzip and co. do, we _compress_ the data set while also making sure that we don't lose much (unique) information in the process. __Communality__ ($h^2$) therefore represents variance explained in a particular variable by the factors generated, whereas __uniqueness__ ($u^2$) represents the variance that the factors are not able to explain, you could say "information lost" during compression. If you had as many factors as you have variables, you could perfectly explain the variance and you would have a communality value of 1 for each variable. But then it would not make any sense to use factor analysis, would it?
 
   The resulting system of equations in matrix notation looks like the following, assume there are $m$ observations, $n$ variables in your data set and you have reduced your variables to $r$ factors. This is the system we want to achieve, we want to decompose our variables in the following way:
 
@@ -61,7 +64,8 @@ which could also be denoted as the following.
 $$ 1 = h^2 + u^2$$
   
   
-  
+<br> 
+
 ### Distinction - Supervised vs Unsupervised Methods
 
   We __don't__ have a model to work with in factor analysis, that makes it an unsupervised method, while it may make sense to take a look at the correlation matrix beforehand to see if it is worthwhile to run a factor analysis, we don't have to pre-group variables, or even name factors before running. You could argue that the expression I showed above might qualify as a model, but no, that's not what I mean. We have no notion what the factors __must__ look like, contrary to regression where we are trying to make the combination of our explanatory variables look as much as possible like the dependent variable. In factor analysis, however, you can have a look at what the factors __could__ look like, but have no say whatsoever on what they __must__ look like. You can think of a dependent variable as a supervisor that you should obey, we have no dependent variables in factor analysis.
@@ -69,7 +73,8 @@ $$ 1 = h^2 + u^2$$
   Yet it still makes sense to have some expectations, and if you don't have any variables that can be grouped together (read: high correlation), you might have to conclude that it is not worth using factor analysis. Because even if you reduce your data set to a number of factors, if the variance explained by these factors is around 30% percent, it will not have made sense to use factor analysis.
   
   
-  
+<br> 
+
 ### Application
 
 __Reminder:__ even if you are not interested in coding, it makes sense to read through what's happening here. Just look at the tables/results/comments and factor analysis should start making sense, quite fast.
@@ -199,7 +204,7 @@ The second table present different measures for variance explained. The metric o
 Let's talk about __loadings__ and how central they are to a factor analysis model. Remember that each loading is a correlation value between the given variable and the factor. Let us extract loadings. I'll demonstrate how you can get __communalities__ and __eigenvalues__, which correspond to how explained a variable is and how explanatory a factor is, respectively. We can square the loadings and sum squared loadings for each variable to find communalities, and sum squared loadings for each factor to find eigenvalues.
 
 
-```{r,}
+```{r}
 
 ldg <- as.data.frame(fact_result_nr$loadings[]) #this is some weird syntax, don't dwell on it. 
 knitr::kable(ldg,col.names = c("Factor 1","Factor 2")) %>% kableExtra::kable_styling()
@@ -229,11 +234,13 @@ For communalities you can take a look at the table below. Notice, again, that th
 as.matrix(ldg)^2  %>% apply(MARGIN = 1,sum) %>% knitr::kable(col.names = c("Communalities")) %>% kableExtra::kable_styling()
 
 ```
+<br>
 
 #### Rotations
 
 refer to <http://static.esmt.org/pub/edtech/customer_perceptions.html> for a detailed account of factor rotations.
 
+<br>
 
 #### Factors Scores
 
@@ -246,6 +253,7 @@ knitr::kable(fac_scores) %>% kableExtra::kable_styling() %>%  kableExtra::scroll
 We now have reduced our data set of 6 variables, effectively to just 2 variables, while still retaining the 74% of the variance that exists in the original data set. We are now ready to use these factors as inputs in a different analysis! Note that all the factors have 0 mean and 1 variance, as this is how they are constructed.
 
 
+<br>
 
 ### Questions
 
