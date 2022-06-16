@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Efe Baslar" />
+
+<meta name="date" content="2022-06-16" />
+
+<title>Final Notes</title>
+
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">CUSA Summaries</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="https://baslare.net">Efe Baslar</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Final Notes</h1>
+<h4 class="author">Efe Baslar</h4>
+<h4 class="date">2022-06-16</h4>
+
+</div>
+
+
+<div id="cluster-analysis" class="section level2">
+<h2>Cluster Analysis</h2>
+<p>Let us shortly go through cluster Analysis. You can see on the plot
+below the observation numbers in the dataset. This is going to make it
+easier to connect it to the dendrograms. Visual inspection doesn’t
+reveal much as to how many clusters we should choose to go with.</p>
+<p><img src="summary_ca_2_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div id="dendrograms" class="section level3">
+<h3>Dendrograms</h3>
+<p>Dendrograms allows us to make guided decisions on how to split the
+data set into clusters. We should start looking at a dendrogram
+bottom-up, and try to create new clusters only after moving up
+relatively high without encountering horizontal branches.</p>
+<p>Remember that the vertical lengths correspond to distances (depends
+on the distance measure used in constructing the dendrogram), this
+should give you the biggest clues to match dendrograms to plots.</p>
+<p>You can see below the cases of 2, 3 and 4 clusters visualized on
+dendrograms. It is useful to remember that there is no single best
+solution when doing cluster analysis, even seemingly useless cluster
+solutions might have their own benefits in particular use cases.</p>
+<p><img src="summary_ca_2_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="summary_ca_2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="summary_ca_2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>While this is not the only way to <em>choose</em> the number of
+clusters, now that we have some insight about the data set, we can use
+it to guide our choice of number of clusters. Using 4 clusters seem a
+bit like overdoing it, so you can see below the solutions for 2 and 3
+clusters using K-means.</p>
+<p>Note that K-means and hierarchical clustering solutions are not the
+same. Even K-means solutions themselves are not perfectly consistent
+throughout different runs, due to initial placements of centroids being
+random. But you can see a recurring pattern, as the observations that
+alternate between different clusters are those the algorithm is not
+really <em>sure</em> where to place.</p>
+</div>
+<div id="linkage-methods" class="section level3">
+<h3>Linkage Methods</h3>
+<p>Consult to the following post for a very nice explanation of linkage
+methods, their advantages and disadvantages.</p>
+<p>[<a
+href="https://stats.stackexchange.com/questions/195446/choosing-the-right-linkage-method-for-hierarchical-clustering"
+class="uri">https://stats.stackexchange.com/questions/195446/choosing-the-right-linkage-method-for-hierarchical-clustering</a>]</p>
+</div>
+<div id="k-means-clustering" class="section level3">
+<h3>K-Means Clustering</h3>
+<p><img src="summary_ca_2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="summary_ca_2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="using-clusters" class="section level3">
+<h3>Using Clusters</h3>
+<p>Cluster Analysis assigns each row to a specific cluster. This comes
+in the form of a new column in terms of data analysis. We can use this
+column for filtering, aggregation and cross tabular operations to reach
+some insights (e.g. learning about customer segments, which segment to
+target for a specific campaign).</p>
+</div>
+<div id="interpretation" class="section level3">
+<h3>Interpretation</h3>
+<p>Cluster Analysis interpretation is very open to speculation, as it is
+not always the case to find stable cluster solutions. Any interpretation
+should rely on the fact that cluster analysis groups together the
+observations</p>
+</div>
+</div>
+<div id="logistic-regression" class="section level2">
+<h2>Logistic Regression</h2>
+<p>Logistic regression is a very useful and commonly used method for
+predicting an event that has two possible outcomes. It also able to
+determine which features are the strongest in terms of affecting the
+outcome of this event.</p>
+<p>It is actually the first and only supervised method we’ve dealt with
+in the scope of our lecture. It has a somewhat simple structure
+resembling that of linear regression, but thanks to the link function
+logistic regression uses, we are <em>always</em> getting values between
+0 and 1, which corresponds to the predicted probability that the event
+question takes place (or not).</p>
+<div id="odds-ratios" class="section level3">
+<h3>Odds Ratios</h3>
+<p>Odds ratios play a central role in doing and interpreting logistic
+regression and they have an inherent relation to probabilities. This is
+the relation we will be using to predict the probability of an event
+occurring. The logistic regression is a generalized linear model, which
+means that it does not assume a linear relationship between the
+dependent variable and the combination of explanatory variables.</p>
+<p><span class="math display">\[ odds = \frac{p}{(1-p)}\]</span> Using
+some properties of the exponential function,</p>
+<p><span class="math display">\[ log(odds) = \beta_{0} + \beta_{1}X_{1}
++  \beta_{2}X_{2} + ...\]</span> becomes…</p>
+<p><span class="math display">\[ odds = e^{\beta_{0} + \beta_{1}X_{1}
++  \beta_{2}X_{2} + ...} \]</span> The expression above is the reason
+why we use the exponential function when we want to learn about the
+effects of a particular coefficient in the logistic regression output on
+the <em>odds</em> that an event happening. Because odds are related
+linearly to a particular combination <span
+class="math inline">\(\beta_{i}X_{i}\)</span>.</p>
+<p>Using the expression for odds, we can also get the expression for p,
+the probability of the focal event happening.</p>
+<p><span class="math display">\[ p = \frac{odds}{1 + odds} \]</span> We
+can therefore easily see that an odds ratio of 3 corresponding to a
+probability of 75%. In other words, “odds of this happening is three to
+one”!</p>
+<p>Substituting the odds ratio, we can get the expression for extracting
+the probabilities out of a logistic regression model. You can see that
+there is no linear relationship between a particular combination <span
+class="math inline">\(\beta_{i}X_{i}\)</span> and the probability that
+our happening. That is the reason why we cannot directly get
+probabilities using the estimated coefficents in a logistic regression
+output.</p>
+<p><span class="math display">\[  p = \frac{e^{\beta_{0} +
+\beta_{1}X_{1} +  \beta_{2}X_{2} + ...}}{1 + e^{\beta_{0} +
+\beta_{1}X_{1} +  \beta_{2}X_{2} + ...}} \]</span></p>
+</div>
+<div id="dummy-variables" class="section level3">
+<h3>Dummy Variables</h3>
+<p>In any type of regression analysis, dummy variables play an integral
+role in helping the analyst interpret qualitative/categorical variables
+in a quantitative context. You can see below a portion of our data set.
+Each row corresponds to a purchase decision and some associated acts of
+marketing. <em>Pass</em> is equal to 1 if a season pass purchase took
+place, 0 otherwise. The other columns, however, are bit more
+interesting.</p>
+<p>We can see that the <em>Channel</em> column can take up three
+different values; Park, Mail and E-Mail. The <em>Promo</em> column on
+the other hand can take up two values; Bundle and no Bundle.</p>
+<p>Because we want these columns to make some sense, we’ll be using
+dummy variables to transform these into a form that logistic regression
+algorithm can understand, which is numbers of course.</p>
+<p>We don’t need to do it by hand since logistic regression does that
+for you (you might need to transform these into dummies by yourself when
+running other methods)</p>
+<pre><code>##      Channel    Promo Pass
+## 989     Mail NoBundle    1
+## 502     Park   Bundle    1
+## 286     Park   Bundle    1
+## 1954    Mail   Bundle    0
+## 3059   Email NoBundle    0
+## 1296    Park NoBundle    1
+## 1373    Park NoBundle    1
+## 2365    Mail NoBundle    0
+## 544     Park   Bundle    1
+## 1668    Mail   Bundle    0</code></pre>
+<p>Basically, converting the table above to contain dummy variables
+would look something like below. Notice that dummies for e-mail channel
+and NoBundle case are missing. This happens to ensure that our columns
+are not linearly dependent. Linear dependency causes the issue known as
+perfect multicollinearity which prevents the analyst to do any sort of
+regression analysis (linearly dependent columns = uninvertible matrix =
+no solution for regression)</p>
+<pre><code>##    Channel    Promo Pass Channel_Mail Channel_Park Promo_Bundle
+## 1     Mail NoBundle    1            1            0            0
+## 2     Park   Bundle    1            0            1            1
+## 3     Park   Bundle    1            0            1            1
+## 4     Mail   Bundle    0            1            0            1
+## 5    Email NoBundle    0            0            0            0
+## 6     Park NoBundle    1            0            1            0
+## 7     Park NoBundle    1            0            1            0
+## 8     Mail NoBundle    0            1            0            0
+## 9     Park   Bundle    1            0            1            1
+## 10    Mail   Bundle    0            1            0            1</code></pre>
+</div>
+<div id="model" class="section level3">
+<h3>Model</h3>
+<div id="model-0-benchmark" class="section level4">
+<h4>Model 0 (Benchmark)</h4>
+<p>We need a benchmark model to see whether our own models perform
+better than the base model, the case in which we don’t include any
+explanatory variables.</p>
+<p><span class="math display">\[  p = \frac{e^{\beta_{0}}}{1 +
+e^{\beta_{0}}} \]</span></p>
+<p>The expression above deals with population (real) parameters. We
+don’t have access to probabilities of this particular purchase event
+happening. We only have records of it happening or not, we’ll be using
+these as our dependent variable and estimate the sample estimator <span
+class="math inline">\(\hat{\beta{i}}\)</span> of <span
+class="math inline">\(\beta{i}\)</span>.</p>
+<p>These are very important concepts in statistics but we only need to
+make this distinction to make sure we know that the coefficients we’re
+getting from regression analyses are merely estimations of true values
+we can’t ever know. That’s why we are interested in statistical
+significance and confidence intervals when assessing and interpreting
+the model output.</p>
+<p>Yes, the coefficients we’re getting in the regression analysis output
+are <span class="math inline">\(\hat{\beta{i}}\)</span>.</p>
+<pre><code>## 
+## Call:
+## glm(formula = Pass ~ 1, family = binomial, data = passdf)
+## 
+## Deviance Residuals: 
+##    Min      1Q  Median      3Q     Max  
+## -1.183  -1.183   1.171   1.171   1.171  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)
+## (Intercept)  0.01394    0.03560   0.392    0.695
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 4375  on 3155  degrees of freedom
+## Residual deviance: 4375  on 3155  degrees of freedom
+## AIC: 4377
+## 
+## Number of Fisher Scoring iterations: 3</code></pre>
+<p>To see that the intercept is related closely to the average (when the
+effects of the explanatory variables are discounted), look at the
+expression below. We used the intercept coefficient in the model and the
+value we are getting is</p>
+<p><span class="math display">\[  p = \frac{e^{0.01394}}{1 +
+e^{0.01394}} = 0.5034 \]</span> This value is identical to the empirical
+(observed) probability of the pass purchase event happening.</p>
+<p><span class="math display">\[ \bar{p} = \frac{1\times I[Pass = 1] +
+0\times I[Pass = 0]]}{N} = \frac {1589}{3156} = 0.5034\]</span> The
+reason we’re using this model as benchmark is actually this fact: is the
+model we are using actually any better than simply taking the
+average?</p>
+</div>
+<div id="model-1" class="section level4">
+<h4>Model 1</h4>
+<p><span class="math display">\[  p = \frac{e^{\beta_{0} +
+\beta_{1}Promo}}{1 + e^{\beta_{0} + \beta_{1}Promo}} \]</span></p>
+<p>The model that we’re estimating is shown above.The <em>Promo</em>
+variable is the dummy variable. It equals 1 when Promo is available, 0
+otherwise.</p>
+<pre><code>## 
+## Call:
+## glm(formula = Pass ~ Promo, family = binomial, data = passdf)
+## 
+## Deviance Residuals: 
+##    Min      1Q  Median      3Q     Max  
+## -1.262  -1.097   1.095   1.095   1.260  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -0.19222    0.05219  -3.683 0.000231 ***
+## PromoBundle  0.38879    0.07167   5.425 5.81e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 4375.0  on 3155  degrees of freedom
+## Residual deviance: 4345.4  on 3154  degrees of freedom
+## AIC: 4349.4
+## 
+## Number of Fisher Scoring iterations: 3</code></pre>
+<p>Remember that this is what we need to interpret the model, as this is
+the most simple linear relation we can get. In order to interpret
+probabilities, we’ll need another approach.</p>
+<p><span class="math display">\[ odds = {e^{\beta_{0} + \beta_{1}Promo}}
+\]</span> So, basically when <em>Promo</em> = 1, this equation becomes
+the expression below. We can see that the intercept has changed. We can
+also see that <span class="math inline">\(e^{0.388}\)</span> is a factor
+that multiplies the base odds ratio (in the context of this particular
+model!). We know that $e^{0.388} = 1.47403 $ and that it means the being
+exposed to promo is associated with 47% increased odds of purchasing the
+season pass.</p>
+<p><span class="math display">\[ odds = {e^{-0.192 + 0.388}} =
+e^{0.388}e^{-0.192} \]</span></p>
+</div>
+<div id="model-2" class="section level4">
+<h4>Model 2</h4>
+<p>Now pay attention to what’s happening below. We are dealing with our
+categorical variable with 3 levels (Mail,Park,eMail) and that we cannot
+observe eMail anywhere in the expression below! No worries, nothing is
+wrong here. But we need a different perspective here to interpret the
+results we have received.</p>
+<p><span class="math display">\[  p = \frac{e^{\beta_{0} +
+\beta_{1}Promo +  \beta_{2}Mail + \beta_{3}Park}}{1 + e^{\beta_{0} +
+\beta_{2}Mail + \beta_{3}Park}} \]</span></p>
+<p>One thing to note here is that Mail and Park cannot be equal to 1 at
+the same time because they are mutually exclusive by definition! Since
+the Channel variable could take up only 1 of mail, park and e-mail at a
+time, the same logic applies here as well. So, when both mail and park
+variables equal to 0, that means the active channel is the e-mail
+channel!</p>
+<p>But the most important thing is the following, let us calculate the
+odds for the case that we have promotion bundle and we are using the
+mail channel.</p>
+<p><span class="math display">\[  p = \frac{e^{-2.078 -0.5602\times 1 +
+2.1761 \times 1 + 3.72 \times 0}}{1 + e^{-2.078 -0.5602\times 1 + 2.1761
+\times 1 + 3.72 \times 0}} \]</span></p>
+<pre><code>## 
+## Call:
+## glm(formula = Pass ~ Promo + Channel, family = binomial, data = passdf)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.9079  -0.9883   0.5946   0.7637   2.3272  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -2.07860    0.13167 -15.787  &lt; 2e-16 ***
+## PromoBundle -0.56022    0.09031  -6.203 5.54e-10 ***
+## ChannelMail  2.17617    0.14651  14.854  &lt; 2e-16 ***
+## ChannelPark  3.72176    0.15964  23.313  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 4375.0  on 3155  degrees of freedom
+## Residual deviance: 3490.2  on 3152  degrees of freedom
+## AIC: 3498.2
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+<p><span class="math display">\[ odds = {e^{-0.2078 -0.5602 +2.1761 }} =
+e^{2.161}e^{-0.5602}e^{-0.2078} \]</span> So, compared to the case where
+no promo using the channel <em>e-mail</em>, using promo and the mail
+channel is associated with 5.03 times increased odds of seeing a pass
+purchase decision. Because $ e<sup>{2.161}e</sup>{-0.5602} =
+5.0324$.</p>
+<p>We should always be careful what we are comparing our interpretation
+against, as the base case is only implied when we are using dummy
+variables.</p>
+<p>In order to calculate the probability corresponding to the particular
+case above, we’ll be using the p formula. This gives us a probability of
+0.386, which seems to be worse than doing nothing (compare this against
+model 0, where the predicted probability was 0.50)</p>
+</div>
+<div id="model-3" class="section level4">
+<h4>Model 3</h4>
+<p>Model 3 is only different in that it includes interaction terms. We
+use interaction terms to see if there is an amplified or a dampened
+effect when we are using more than two treatments at once. There may be
+an unintended interplay between, let’s say, using Promo through the park
+channel.</p>
+<p><span class="math display">\[  p = \frac{e^{\beta_{0} +
+\beta_{1}Promo +  \beta_{2}Mail + \beta_{3}Park + \beta_{4}Promo \times
+Mail + \beta_{5} Promo\times Park}}{1 + e^{\beta_{0} + \beta_{1}Promo
++  \beta_{2}Mail + \beta_{3}Park + \beta_{4}Promo \times Mail +
+\beta_{5} Promo\times Park}} \]</span></p>
+<p>We can see that the coefficients related to interaction effects are
+significant. This tells us that some other mechanism is at play here.
+Obviously, the interaction effects will not be available if Promo is not
+active as the dummy variable corresponding to Promo will be equal to 0
+(The same applies to the E-mail channel).</p>
+<pre><code>## 
+## Call:
+## glm(formula = Pass ~ Promo + Channel + Promo:Channel, family = binomial, 
+##     data = passdf)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.9577  -0.9286   0.5642   0.7738   2.4259  
+## 
+## Coefficients:
+##                         Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)              -2.8883     0.1977 -14.608  &lt; 2e-16 ***
+## PromoBundle               2.1071     0.2783   7.571 3.71e-14 ***
+## ChannelMail               3.1440     0.2133  14.743  &lt; 2e-16 ***
+## ChannelPark               4.6455     0.2510  18.504  &lt; 2e-16 ***
+## PromoBundle:ChannelMail  -2.9808     0.3003  -9.925  &lt; 2e-16 ***
+## PromoBundle:ChannelPark  -2.8115     0.3278  -8.577  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 4375.0  on 3155  degrees of freedom
+## Residual deviance: 3393.5  on 3150  degrees of freedom
+## AIC: 3405.5
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<p><span class="math display">\[  p = \frac{e^{-2.88 + 2.10Promo
++  3.1440Mail + 4.64Park -2.98Promo \times Mail -2.81 Promo\times
+Park}}{1 + e^{-2.88 + 2.10Promo +  3.1440Mail + 4.64Park -2.98Promo
+\times Mail -2.81 Promo\times Park}} \]</span> Let us compute the
+probability of using the e-mail channel as part of a bundle. Due to both
+<em>Park</em> and <em>Mail</em> being equal to 0, these are terms we are
+left with</p>
+<p><span class="math display">\[  p = \frac{e^{-2.88 + 2.10Promo}}{1 +
+e^{-2.88 + 2.10Promo }} = 0.315 \]</span></p>
+<p>We can see that using e-mail as part of a bundle is actually not a
+good idea.</p>
+<p>On final note about confidence intervals:</p>
+<p>We can see below that the confidence intervals for the odds are quite
+wide. This is not surprising as the model is not trying to estimate the
+odds ratios but rather the coefficients in the generalized linear model
+(in our case, logistic regression). You can see that, none of the
+significant variable include 1 in their confidence interval (which is
+the ineffective element when thinking about odds ratios.)</p>
+<pre><code>##                               2.5 %       97.5 %
+## (Intercept)              0.03688720   0.08032263
+## PromoBundle              4.78970184  14.31465957
+## ChannelMail             15.54800270  35.97860059
+## ChannelPark             64.74364028 173.57861021
+## PromoBundle:ChannelMail  0.02795867   0.09102369
+## PromoBundle:ChannelPark  0.03135437   0.11360965</code></pre>
+</div>
+</div>
+<div id="model-assessment" class="section level3">
+<h3>Model Assessment</h3>
+<p>There are quite a few ways to evaluate how a good a prediction model
+is doing. One way is to see how well it did in predicting each class (in
+this case 0 and 1). We have the hit rate metric, which calculates the
+share of true positives and true negatives among all predictions.</p>
+<pre><code>##      hit0
+## y        1  Sum
+##   0   1567 1567
+##   1   1589 1589
+##   Sum 3156 3156</code></pre>
+<p>For model 0, the benchmark model, you can see that the model made no
+0 predictions, all the predictions were 1! This still gives a hit rate
+of over 0.5! Not actually better than flipping a coin. (1589/3156 =
+0.503)</p>
+<pre><code>##      hit1
+## y        0    1  Sum
+##   0    812  755 1567
+##   1    670  919 1589
+##   Sum 1482 1674 3156</code></pre>
+<p>Model 1 on the other hand is only slightly superior to the benchmark
+model in terms of hit rate (812 + 919 = 1731/3156 giving us a hit rate
+of 0.5484).</p>
+<pre><code>##      hit2
+## y        0    1  Sum
+##   0   1017  550 1567
+##   1    307 1282 1589
+##   Sum 1324 1832 3156</code></pre>
+<p>After the addition of the channel variable, the model gets more
+accurate. With a hit rate of 0.728 it is vastly superior to the previous
+models. (1017 + 1282 = 2299/3156 -&gt; 0.728)</p>
+<pre><code>##      hit3
+## y        0    1  Sum
+##   0   1017  550 1567
+##   1    307 1282 1589
+##   Sum 1324 1832 3156</code></pre>
+<p>The third model doesn’t make any difference in terms of prediction
+quality as the interaction terms are mostly for investigating the
+effects of explanatory variables on the dependent variables, rather than
+improving the prediction quality.</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
